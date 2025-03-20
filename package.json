@@ -10,9 +10,7 @@
     "lint": "next lint",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,scss,md,html}\" --ignore-path .prettierignore",
     "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css,scss,md,html}\" --ignore-path .prettierignore",
-    "prettier-check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
-    "prepare": "bunx husky install",
-    "lint-staged": "lint-staged"
+    "prettier-check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css,scss,md}\""
   },
   "dependencies": {
     "@sanity/asset-utils": "^2.2.1",
