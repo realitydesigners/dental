@@ -1,0 +1,28 @@
+# Build output
+.next/
+out/
+dist/
+build/
+
+# Node modules
+node_modules/
+
+# Cache
+.cache/
+.npm/
+
+# Coverage reports
+coverage/
+
+# Logs
+logs/
+*.log
+
+# Environment variables
+.env*
+!.env.example
+
+# Other
+.DS_Store
+.turbo 
+
