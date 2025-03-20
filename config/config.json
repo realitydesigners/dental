@@ -1,0 +1,55 @@
+{
+  "business": {
+    "name": "",
+    "tagline": "",
+    "description": "",
+    "industry": "",
+    "foundedYear": "",
+    "logo": {
+      "light": "",
+      "dark": ""
+    }
+  },
+  "contact": {
+    "email": "",
+    "phone": "",
+    "address": {
+      "street": "",
+      "city": "",
+      "state": "",
+      "zipCode": "",
+      "country": ""
+    },
+    "socialMedia": {
+      "facebook": "",
+      "twitter": "",
+      "instagram": "",
+      "linkedin": ""
+    }
+  },
+  "branding": {
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#ffffff",
+      "accent": "#ff0000"
+    },
+    "fonts": {
+      "heading": "Inter",
+      "body": "Inter"
+    }
+  },
+  "site": {
+    "title": "",
+    "description": "",
+    "keywords": [],
+    "defaultLanguage": "en",
+    "supportedLanguages": ["en"],
+    "maintenanceMode": false
+  },
+  "features": {
+    "enableBlog": false,
+    "enableShop": false,
+    "enableNewsletter": true,
+    "enableContactForm": true
+  }
+}
