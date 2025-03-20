@@ -83,7 +83,7 @@ export function HeroBlock({
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.02] pointer-events-none" />
 
-      <div className="container relative mx-auto px-4">
+      <div className=" relative px-4 w-full lg:px-[5vw]">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center min-h-[calc(100vh-4rem)] py-20">
           {/* Content */}
           <div className="flex flex-col items-start gap-8 max-w-2xl">
@@ -91,7 +91,7 @@ export function HeroBlock({
 
             <div className="space-y-6">
               {title && (
-                <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl xl:text-6xl [text-wrap:balance]">
+                <h1 className="text-6xl font-bold tracking-tight text-white sm:text-6xl xl:text-7xl [text-wrap:balance]">
                   {title}
                 </h1>
               )}
@@ -112,8 +112,8 @@ export function HeroBlock({
               <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
                 <SanityImage
                   asset={image}
-                  width={800}
-                  height={600}
+                  width={1200}
+                  height={800}
                   className="h-full w-full object-cover"
                   priority
                 />
