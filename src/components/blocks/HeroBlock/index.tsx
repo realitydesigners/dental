@@ -5,12 +5,10 @@ import { SanityImage } from "../../sanity-image";
 // Define the missing types
 type ButtonType = {
   _key?: string;
-  label?: string;
-  link?: {
-    href?: string;
-    openInNewTab?: boolean;
-  };
+  text?: string;
   variant?: "default" | "outline" | "secondary" | "link";
+  openInNewTab?: boolean;
+  href?: string;
 };
 
 type PagebuilderType<T extends string> = {
@@ -42,7 +40,7 @@ const SanityButtons = ({
   return (
     <div className={`flex flex-wrap gap-4 ${className}`}>
       {buttons.map((button, index) => {
-        if (!button.link?.href) return null;
+        if (!button.href) return null;
 
         const getButtonVariantClasses = () => {
           switch (button.variant) {
@@ -60,12 +58,12 @@ const SanityButtons = ({
         return (
           <Link
             key={button._key || index}
-            href={button.link.href}
-            target={button.link.openInNewTab ? "_blank" : undefined}
-            rel={button.link.openInNewTab ? "noopener noreferrer" : undefined}
+            href={button.href}
+            target={button.openInNewTab ? "_blank" : undefined}
+            rel={button.openInNewTab ? "noopener noreferrer" : undefined}
             className={`inline-flex items-center justify-center rounded-lg px-8 py-4 text-base font-medium transition-all duration-300 ${getButtonVariantClasses()}`}
           >
-            {button.label}
+            {button.text}
           </Link>
         );
       })}

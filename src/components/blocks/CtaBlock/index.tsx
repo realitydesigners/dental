@@ -5,12 +5,10 @@ import { SanityImage } from "../../sanity-image";
 // Define the types for the component
 type ButtonType = {
   _key?: string;
-  label?: string;
-  link?: {
-    href?: string;
-    openInNewTab?: boolean;
-  };
+  text?: string;
   variant?: "default" | "outline" | "secondary" | "link";
+  openInNewTab?: boolean;
+  href?: string;
 };
 
 type StatType = {
@@ -53,7 +51,7 @@ const SanityButtons = ({
   return (
     <div className={`flex flex-wrap gap-4 ${className}`}>
       {buttons.map((button, index) => {
-        if (!button.link?.href) return null;
+        if (!button.href) return null;
 
         const getButtonVariantClasses = () => {
           switch (button.variant) {
@@ -71,12 +69,12 @@ const SanityButtons = ({
         return (
           <Link
             key={button._key || index}
-            href={button.link.href}
-            target={button.link.openInNewTab ? "_blank" : undefined}
-            rel={button.link.openInNewTab ? "noopener noreferrer" : undefined}
+            href={button.href}
+            target={button.openInNewTab ? "_blank" : undefined}
+            rel={button.openInNewTab ? "noopener noreferrer" : undefined}
             className={`inline-flex items-center justify-center rounded-lg px-8 py-4 text-base font-medium transition-all duration-300 ${getButtonVariantClasses()}`}
           >
-            {button.label}
+            {button.text}
           </Link>
         );
       })}
@@ -118,13 +116,17 @@ export function CTABlock({
   return (
     <section className="relative overflow-hidden bg-black">
       {backgroundImage && (
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute inset-0 bg-black/90" />
-          <SanityImage
-            asset={backgroundImage}
-            fill
-            className="object-cover opacity-40"
-          />
+          <div className="relative h-[120%] w-[120%] -translate-x-[10%] -translate-y-[10%]">
+            <SanityImage
+              asset={backgroundImage}
+              fill
+              sizes="100vw"
+              className="object-contain opacity-40"
+              priority
+            />
+          </div>
         </div>
       )}
 
