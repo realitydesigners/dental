@@ -33,12 +33,12 @@ export function PageBuilder({
       }
 
       return currentPageBuilder;
-    },
+    }
   );
 
   return (
     <main
-      className="flex flex-col gap-16 my-16 max-w-7xl mx-auto"
+      className="flex flex-col "
       data-sanity={createDataAttribute({
         id: id,
         baseUrl: studioUrl,
