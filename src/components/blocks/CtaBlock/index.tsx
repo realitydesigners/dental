@@ -36,17 +36,17 @@ const Badge = ({
   const getVariantClasses = () => {
     switch (variant) {
       case "secondary":
-        return "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200";
+        return "bg-blue-900/30 text-blue-100 dark:bg-blue-900/40 dark:text-blue-100 border border-blue-800/50";
       case "outline":
-        return "bg-transparent border border-gray-300 text-gray-800 dark:border-gray-600 dark:text-gray-200";
+        return "bg-transparent border border-blue-400 text-blue-100 dark:border-blue-500 dark:text-blue-100";
       default:
-        return "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100";
+        return "bg-blue-500/10 text-blue-100 dark:bg-blue-800/20 dark:text-blue-100 border border-blue-400/20";
     }
   };
 
   return (
     <span
-      className={`px-3 py-1 text-xs font-medium rounded-full ${getVariantClasses()} ${className}`}
+      className={`px-4 py-1.5 text-sm font-medium rounded-full ${getVariantClasses()} ${className} backdrop-blur-sm`}
     >
       {children}
     </span>
@@ -73,13 +73,13 @@ const SanityButtons = ({
         const getButtonVariantClasses = () => {
           switch (button.variant) {
             case "outline":
-              return "border border-gray-300 text-gray-900 hover:bg-gray-100 dark:border-gray-600 dark:text-white dark:hover:bg-gray-800";
+              return "border border-blue-300/50 text-blue-50 hover:bg-blue-800/30 dark:border-blue-400/50 dark:text-blue-50 dark:hover:bg-blue-800/40";
             case "secondary":
-              return "bg-gray-100 text-gray-900 hover:bg-gray-200 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600";
+              return "bg-white/10 text-white hover:bg-white/20 dark:bg-white/5 dark:text-white dark:hover:bg-white/10 backdrop-blur-sm";
             case "link":
-              return "text-blue-600 hover:underline dark:text-blue-400 p-0";
+              return "text-blue-200 hover:text-blue-100 dark:text-blue-200 dark:hover:text-blue-100 p-0";
             default:
-              return "bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-500";
+              return "bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-500 shadow-lg shadow-blue-500/20";
           }
         };
 
@@ -88,7 +88,7 @@ const SanityButtons = ({
             key={button._key || index}
             href={button.link.href}
             target={button.link.openInNewTab ? "_blank" : "_self"}
-            className={`${buttonClassName} inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-md transition-colors ${getButtonVariantClasses()}`}
+            className={`${buttonClassName} inline-flex items-center justify-center px-6 py-3 text-base font-medium rounded-lg transition-all duration-200 ${getButtonVariantClasses()}`}
           >
             {button.label}
           </Link>
@@ -100,29 +100,33 @@ const SanityButtons = ({
 
 export function CTABlock({ richText, title, eyebrow, buttons }: CTABlockProps) {
   return (
-    <section id="features" className="my-6 md:my-16">
+    <section className="relative my-20">
       <div className="container mx-auto px-4 md:px-8">
-        <div className="bg-gray-100 dark:bg-gray-800 py-16 rounded-3xl px-4">
-          <div className="text-center max-w-3xl mx-auto space-y-8">
+        <div className="relative overflow-hidden bg-gradient-to-br from-gray-900 via-blue-900/30 to-gray-900 py-24 rounded-3xl">
+          {/* Noise Texture */}
+          <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.03]" />
+
+          {/* Gradient Orbs */}
+          <div className="absolute -top-24 -left-24 w-64 h-64 bg-blue-500/30 rounded-full blur-3xl" />
+          <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl" />
+
+          <div className="relative text-center max-w-3xl mx-auto px-4 space-y-8">
             {eyebrow && (
-              <Badge
-                variant="secondary"
-                className="bg-white dark:bg-gray-700 dark:text-gray-200"
-              >
+              <Badge variant="secondary" className="mx-auto">
                 {eyebrow}
               </Badge>
             )}
-            <h2 className="text-3xl font-semibold md:text-5xl text-balance">
+            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight [text-wrap:balance]">
               {title}
             </h2>
-            <div className="text-lg text-gray-600 dark:text-gray-300">
-              <RichText richText={richText} className="text-balance" />
+            <div className="text-lg text-blue-100/80">
+              <RichText richText={richText} className="[text-wrap:balance]" />
             </div>
-            <div className="flex justify-center">
+            <div className="flex justify-center pt-4">
               <SanityButtons
                 buttons={buttons}
                 buttonClassName="w-full sm:w-auto"
-                className="w-full sm:w-fit grid gap-2 sm:grid-flow-col justify-center mb-8"
+                className="w-full sm:w-fit flex flex-col sm:flex-row gap-3 justify-center"
               />
             </div>
           </div>
