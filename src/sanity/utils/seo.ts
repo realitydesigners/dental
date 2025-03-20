@@ -60,11 +60,11 @@ export function getMetaData(data: MetaDataInput): Metadata {
   });
 
   return {
-    title: `${meta.title} | Roboto Studio Demo`,
+    title: `${meta.title} | TBS Dental`,
     description: meta.description,
     metadataBase: new URL(baseUrl),
-    creator: "Roboto Studio Demo",
-    authors: [{ name: "Roboto" }],
+    creator: "TBS Dental",
+    authors: [{ name: "TBS Dental" }],
     icons: {
       icon: `${baseUrl}/favicon.ico`,
     },
