@@ -119,7 +119,7 @@ function Navbar({ data }: NavbarProps) {
     <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/80 backdrop-blur-xl dark:border-gray-800 dark:bg-gray-900/80">
       <nav className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2">
-          <Logo src={logo} alt={siteTitle} priority />
+          <Logo src="/tbs.png" alt={siteTitle} priority />
         </Link>
 
         {Array.isArray(columns) && columns?.length > 0 && (

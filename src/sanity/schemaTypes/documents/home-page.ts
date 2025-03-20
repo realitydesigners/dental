@@ -35,12 +35,12 @@ export const homePage = defineType({
         rule
           .min(140)
           .warning(
-            "The meta description should be at least 140 characters for optimal SEO visibility in search results",
+            "The meta description should be at least 140 characters for optimal SEO visibility in search results"
           ),
         rule
           .max(160)
           .warning(
-            "The meta description should not exceed 160 characters as it will be truncated in search results",
+            "The meta description should not exceed 160 characters as it will be truncated in search results"
           ),
       ],
     }),
@@ -56,9 +56,52 @@ export const homePage = defineType({
       },
       validation: (Rule) => Rule.required(),
     }),
-    pageBuilderField,
+    {
+      ...pageBuilderField,
+      initialValue: [
+        {
+          _type: "cta",
+          style: "gradient",
+          eyebrow: "Special Offer",
+          title: "Transform Your Practice with Premium Dental Equipment",
+          subtitle: "Get exclusive deals on our most popular dental supplies",
+          richText: [
+            {
+              _type: "block",
+              style: "normal",
+              children: [
+                {
+                  _type: "span",
+                  text: "Join thousands of dental professionals who trust us for their equipment and supply needs. Enjoy premium quality, competitive prices, and exceptional service.",
+                },
+              ],
+            },
+          ],
+          stats: [
+            { value: "5000+", label: "Products" },
+            { value: "24/7", label: "Support" },
+            { value: "98%", label: "Satisfaction" },
+            { value: "Next Day", label: "Delivery" },
+          ],
+          buttons: [
+            {
+              _type: "button",
+              label: "Browse Products",
+              variant: "default",
+              link: { href: "/products", type: "internal" },
+            },
+            {
+              _type: "button",
+              label: "Contact Sales",
+              variant: "outline",
+              link: { href: "/contact", type: "internal" },
+            },
+          ],
+        },
+      ],
+    },
     ...seoFields.filter(
-      (field) => !["seoNoIndex", "seoHideFromLists"].includes(field.name),
+      (field) => !["seoNoIndex", "seoHideFromLists"].includes(field.name)
     ),
     ...ogFields,
   ],
