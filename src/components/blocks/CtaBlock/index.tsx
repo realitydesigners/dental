@@ -121,7 +121,7 @@ export function CTABlock({
   };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-black via-gray-900 to-black py-16">
+    <section className="relative overflow-hidden bg-gradient-to-b from-black py-20 via-gray-900 to-black py-16">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.02] pointer-events-none mix-blend-overlay" />
 
@@ -132,12 +132,11 @@ export function CTABlock({
       </div>
 
       {backgroundImage && (
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/95 to-black/90" />
+        <div className="absolute inset-0 z-0 flex items-center justify-center">
           <SanityImage
             asset={backgroundImage}
-            fill
-            sizes="100vw"
+            width={200}
+            height={500}
             className="object-cover opacity-20"
             quality={85}
             priority
@@ -172,12 +171,12 @@ export function CTABlock({
             {image && (
               <div className="relative group">
                 <div className="absolute -inset-1 bg-gradient-to-r from-white/5 to-white/10 blur-lg rounded-lg group-hover:from-white/10 group-hover:to-white/20 transition-all duration-700" />
-                <div className="relative aspect-[3/2] overflow-hidden rounded-lg ring-1 ring-white/10 bg-gray-900/50">
+                <div className="relative  overflow-hidden rounded-lg ring-1 ring-white/10 bg-gray-900/50">
                   <SanityImage
                     asset={image}
                     width={600}
                     height={400}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                    className="max-h-[300px] w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
                     quality={85}
                     priority
                   />
@@ -188,7 +187,7 @@ export function CTABlock({
           </>
         ) : (
           <>
-            <div className="max-w-2xl mx-auto">
+            <div className="mx-auto">
               {eyebrow && <Badge>{eyebrow}</Badge>}
               <div className="mt-4 space-y-3">
                 {title && (
