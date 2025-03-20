@@ -33,7 +33,7 @@ export function PageBuilder({
       }
 
       return currentPageBuilder;
-    }
+    },
   );
 
   return (
