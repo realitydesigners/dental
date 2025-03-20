@@ -106,7 +106,7 @@ function updateMainIndex(blockName: string, camelCaseName: string) {
   // Add schema import at the top with other schema imports
   const schemaImportLine = `import { ${camelCaseName} } from "./${blockName}/schema";`;
   const firstComponentImport = lines.findIndex((line) =>
-    line.includes("// Component imports")
+    line.includes("// Component imports"),
   );
   if (firstComponentImport !== -1) {
     lines.splice(firstComponentImport - 1, 0, schemaImportLine);
@@ -117,7 +117,7 @@ function updateMainIndex(blockName: string, camelCaseName: string) {
   // Add component import in the component section
   const componentImportLine = `import { ${blockName} } from "./${blockName}";`;
   const afterComponentsComment = lines.findIndex((line) =>
-    line.includes("// Component imports")
+    line.includes("// Component imports"),
   );
   if (afterComponentsComment !== -1) {
     lines.splice(afterComponentsComment + 1, 0, componentImportLine);
@@ -125,25 +125,25 @@ function updateMainIndex(blockName: string, camelCaseName: string) {
 
   // Add to BLOCK_COMPONENTS
   const blockComponentsStart = lines.findIndex((line) =>
-    line.includes("export const BLOCK_COMPONENTS = {")
+    line.includes("export const BLOCK_COMPONENTS = {"),
   );
   if (blockComponentsStart !== -1) {
     const blockComponentsEnd = lines.findIndex(
-      (line, i) => i > blockComponentsStart && line.includes("} as const;")
+      (line, i) => i > blockComponentsStart && line.includes("} as const;"),
     );
     if (blockComponentsEnd !== -1) {
       const indent = "  ";
       lines.splice(
         blockComponentsEnd,
         0,
-        `${indent}${camelCaseName}: ${blockName},`
+        `${indent}${camelCaseName}: ${blockName},`,
       );
     }
   }
 
   // Add to pageBuilderBlocks
   const pageBuilderStart = lines.findIndex((line) =>
-    line.includes("export const pageBuilderBlocks = [")
+    line.includes("export const pageBuilderBlocks = ["),
   );
   if (pageBuilderStart !== -1) {
     // Find the actual end of the array, accounting for multiline format
@@ -181,14 +181,14 @@ function updateMainIndex(blockName: string, camelCaseName: string) {
             .split(",")
             .filter((item) => item.trim())
             .map((item) => `${indent}${item.trim()},`),
-          `${indent}${camelCaseName},`
+          `${indent}${camelCaseName},`,
         );
         lines.splice(
           pageBuilderStart +
             2 +
             existingItems.split(",").filter((item) => item.trim()).length,
           0,
-          "];"
+          "];",
         );
 
         // Remove original closing part

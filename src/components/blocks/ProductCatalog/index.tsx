@@ -6,7 +6,11 @@ type ProductCatalogProps = {
   // Add more props as needed
 };
 
-export function ProductCatalog({ title, subtitle, description }: ProductCatalogProps) {
+export function ProductCatalog({
+  title,
+  subtitle,
+  description,
+}: ProductCatalogProps) {
   return (
     <section className="py-16 bg-gray-900">
       <div className="container mx-auto px-4">
@@ -15,11 +19,7 @@ export function ProductCatalog({ title, subtitle, description }: ProductCatalogP
             {title}
           </h2>
         )}
-        {subtitle && (
-          <h3 className="text-xl text-blue-400 mb-6">
-            {subtitle}
-          </h3>
-        )}
+        {subtitle && <h3 className="text-xl text-blue-400 mb-6">{subtitle}</h3>}
         {description && (
           <p className="text-gray-300 max-w-3xl leading-relaxed">
             {description}
