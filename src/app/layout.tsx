@@ -30,17 +30,18 @@ export default async function RootLayout({
             <VisualEditing
               refresh={async (payload) => {
                 "use server";
-                if (payload.source === "manual") {
-                  revalidatePath("/", "layout");
-                  return;
-                }
-                const id = payload?.document?._id?.startsWith("drafts.")
-                  ? payload?.document?._id.slice(7)
-                  : payload?.document?._id;
-                const slug = payload?.document?.slug?.current;
-                const type = payload?.document?._type;
-                for (const tag of [slug, id, type]) {
-                  if (tag) revalidateTag(tag);
+                // Only revalidate if it's a mutation
+                if (payload.source === "mutation") {
+                  const id = payload?.document?._id?.startsWith("drafts.")
+                    ? payload?.document?._id.slice(7)
+                    : payload?.document?._id;
+                  const slug = payload?.document?.slug?.current;
+                  const type = payload?.document?._type;
+
+                  // Revalidate specific tags instead of entire layout
+                  if (id) revalidateTag(id);
+                  if (slug) revalidateTag(slug);
+                  if (type) revalidateTag(type);
                 }
               }}
             />

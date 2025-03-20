@@ -24,6 +24,24 @@ import {
   presentationOriginUrl,
 } from "@/src/sanity/lib/api";
 
+// Get the preview URL based on environment
+const getPreviewUrl = () => {
+  // Production environment
+  if (process.env.VERCEL_ENV === "production") {
+    return process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : undefined;
+  }
+  // Preview environment
+  if (process.env.VERCEL_ENV === "preview") {
+    return process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : undefined;
+  }
+  // Local development
+  return "http://localhost:3000";
+};
+
 export default defineConfig({
   name: "default",
   title: title ?? "My Studio",
@@ -37,7 +55,7 @@ export default defineConfig({
         locations,
       },
       previewUrl: {
-        origin: presentationOriginUrl ?? "http://localhost:3001",
+        origin: getPreviewUrl(),
         previewMode: {
           enable: "/api/presentation-draft",
         },
