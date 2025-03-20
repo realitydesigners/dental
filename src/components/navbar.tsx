@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { User, ShoppingCart } from "lucide-react";
 
 import { sanityFetch } from "@/src/sanity/lib/live";
 import { queryNavbarData } from "@/src/sanity/lib/query";
@@ -186,6 +187,20 @@ function Navbar({ data }: NavbarProps) {
         )}
 
         <NavButtons buttons={buttons} />
+        <div className="flex items-center gap-4 border-l border-white/10 pl-6">
+          <Link
+            href="/account"
+            className="rounded-full p-2 text-gray-300 hover:bg-white/10 hover:text-white transition-colors"
+          >
+            <User className="h-5 w-5" />
+          </Link>
+          <Link
+            href="/cart"
+            className="rounded-full p-2 text-gray-300 hover:bg-white/10 hover:text-white transition-colors"
+          >
+            <ShoppingCart className="h-5 w-5" />
+          </Link>
+        </div>
       </nav>
     </header>
   );
