@@ -124,74 +124,69 @@ function Navbar({ data }: NavbarProps) {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-black/80 backdrop-blur-lg">
-      <nav className="container relative mx-auto flex h-16 items-center justify-between px-4">
-        <div className="flex items-center gap-2">
-          <Link href="/" className="flex items-center gap-2">
-            <Logo src="/tbs.png" alt={siteTitle} priority />
-          </Link>
+      <nav className="container mx-auto flex h-16 items-center justify-between px-4">
+        <Link href="/" className="flex items-center gap-2">
+          <Logo src="/tbs.png" alt={siteTitle} priority />
+        </Link>
 
-          {Array.isArray(columns) && columns?.length > 0 && (
-            <div className="hidden items-center gap-8 lg:flex">
-              {columns.map((item) => {
-                if (item.type === "link") {
-                  return (
-                    <NavLink
-                      key={item._key}
-                      href={item.href ?? "#"}
-                      openInNewTab={item.openInNewTab}
-                    >
-                      {item.name}
-                    </NavLink>
-                  );
-                }
+        {Array.isArray(columns) && columns?.length > 0 && (
+          <div className="hidden items-center gap-8 lg:flex">
+            {columns.map((item) => {
+              if (item.type === "link") {
+                return (
+                  <NavLink
+                    key={item._key}
+                    href={item.href ?? "#"}
+                    openInNewTab={item.openInNewTab}
+                  >
+                    {item.name}
+                  </NavLink>
+                );
+              }
 
-                if (item.type === "column" && item.links?.length > 0) {
-                  return (
-                    <div key={item._key} className="relative group">
-                      <button className="flex items-center gap-1 text-sm font-medium text-gray-300 transition-colors hover:text-white">
-                        {item.title}
-                        <svg
-                          className="h-4 w-4 transition-transform group-hover:rotate-180"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M19 9l-7 7-7-7"
-                          />
-                        </svg>
-                      </button>
-                      <div className="absolute left-1/2 top-full hidden -translate-x-1/2 transform group-hover:block">
-                        <div className="mt-2 rounded-lg border border-white/10 bg-black/95 p-4 shadow-xl backdrop-blur-lg">
-                          <div className="grid gap-2">
-                            {item.links.map((link) => (
-                              <NavLink
-                                key={link._key}
-                                href={link.href ?? "#"}
-                                openInNewTab={link.openInNewTab}
-                                className="whitespace-nowrap px-4 py-2 hover:bg-white/5 rounded-md"
-                              >
-                                {link.name}
-                              </NavLink>
-                            ))}
-                          </div>
+              if (item.type === "column" && item.links?.length > 0) {
+                return (
+                  <div key={item._key} className="relative group">
+                    <button className="flex items-center gap-1 text-sm font-medium text-gray-300 transition-colors hover:text-white">
+                      {item.title}
+                      <svg
+                        className="h-4 w-4 transition-transform group-hover:rotate-180"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    </button>
+                    <div className="absolute left-1/2 top-full hidden -translate-x-1/2 transform group-hover:block">
+                      <div className="mt-2 rounded-lg border border-white/10 bg-black/95 p-4 shadow-xl backdrop-blur-lg">
+                        <div className="grid gap-2">
+                          {item.links.map((link) => (
+                            <NavLink
+                              key={link._key}
+                              href={link.href ?? "#"}
+                              openInNewTab={link.openInNewTab}
+                              className="whitespace-nowrap px-4 py-2 hover:bg-white/5 rounded-md"
+                            >
+                              {link.name}
+                            </NavLink>
+                          ))}
                         </div>
                       </div>
                     </div>
-                  );
-                }
-              })}
-            </div>
-          )}
-        </div>
+                  </div>
+                );
+              }
+            })}
+          </div>
+        )}
 
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-          <NavButtons buttons={buttons} />
-        </div>
-
+        <NavButtons buttons={buttons} />
         <div className="flex items-center gap-4 border-l border-white/10 pl-6">
           <Link
             href="/account"

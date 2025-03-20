@@ -17,7 +17,12 @@ import { presentationUrl } from "./src/sanity/utils/presentation-url";
 import { schemaTypes } from "./src/sanity/schemaTypes";
 import { structure } from "./src/sanity/utils/structure";
 import { createPageTemplate } from "./src/sanity/utils/helper";
-import { dataset, projectId, title } from "@/src/sanity/lib/api";
+import {
+  dataset,
+  projectId,
+  title,
+  presentationOriginUrl,
+} from "@/src/sanity/lib/api";
 
 export default defineConfig({
   name: "default",
@@ -32,7 +37,7 @@ export default defineConfig({
         locations,
       },
       previewUrl: {
-        origin: "http://localhost:3000",
+        origin: presentationOriginUrl ?? "http://localhost:3001",
         previewMode: {
           enable: "/api/presentation-draft",
         },
@@ -58,7 +63,7 @@ export default defineConfig({
         return previousAssetSources.filter(
           (assetSource) =>
             // assetSource === mediaAssetSource || // Temporarily disabled
-            assetSource === unsplashAssetSource,
+            assetSource === unsplashAssetSource
         );
       },
     },
