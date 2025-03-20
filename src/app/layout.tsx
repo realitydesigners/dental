@@ -7,6 +7,7 @@ import { Suspense } from "react";
 import { preconnect, prefetchDNS } from "react-dom";
 
 import { FooterServer, FooterSkeleton } from "../components/footer";
+import { NavbarServer, NavbarSkeleton } from "../components/navbar";
 import { PreviewBar } from "../components/preview-bar";
 import { SanityLive } from "../sanity/lib/live";
 
@@ -20,6 +21,9 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`font-geist antialiased`}>
+        <Suspense fallback={<NavbarSkeleton />}>
+          <NavbarServer />
+        </Suspense>
         {(await draftMode()).isEnabled ? (
           <>
             {children}

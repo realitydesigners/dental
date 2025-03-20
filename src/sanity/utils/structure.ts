@@ -86,7 +86,7 @@ const createIndexListWithOrderableItems = ({
               S.document()
                 .views([S.view.form()])
                 .schemaType(index.type)
-                .documentId(index.type),
+                .documentId(index.type)
             ),
           orderableDocumentListDeskItem({
             type: list.type,
@@ -95,13 +95,13 @@ const createIndexListWithOrderableItems = ({
             icon: list.icon ?? File,
             title: `${listTitle}`,
           }),
-        ]),
+        ])
     );
 };
 
 export const structure = (
   S: StructureBuilder,
-  context: StructureResolverContext,
+  context: StructureResolverContext
 ) => {
   return S.list()
     .title("Content")
@@ -130,12 +130,12 @@ export const structure = (
           S.list()
             .title("Site Configuration")
             .items([
-              // createSingleTon({
-              //   S,
-              //   type: "navbar",
-              //   title: "Navigation",
-              //   icon: PanelTopDashedIcon,
-              // }),
+              createSingleTon({
+                S,
+                type: "navbar",
+                title: "Navigation",
+                icon: PanelTopDashedIcon,
+              }),
               createSingleTon({
                 S,
                 type: "footer",
@@ -148,7 +148,7 @@ export const structure = (
                 title: "Global Settings",
                 icon: CogIcon,
               }),
-            ]),
+            ])
         ),
     ]);
 };
